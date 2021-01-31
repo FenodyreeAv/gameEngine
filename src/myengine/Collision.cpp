@@ -27,7 +27,7 @@ namespace myengine
 		{
 			if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same
 			{
-				std::cout << "Ignored self collision.";
+				//std::cout << "Ignored self collision.";
 			}
 			else
 			{
@@ -37,17 +37,17 @@ namespace myengine
 				rend::vec3 targetSize = weakptrTarget.lock()->getSize();
 				rend::vec3 targetCentre = weakptrTarget.lock()->getCentre();
 
-				std::cout << "This object Size: ";
-				std::cout << glm::to_string(size) << std::endl;
-				std::cout << "This object Centre: ";
-				std::cout << glm::to_string(centre) << std::endl;
+				//std::cout << "This object Size: ";
+				//std::cout << glm::to_string(size) << std::endl;
+				//std::cout << "This object Centre: ";
+				//std::cout << glm::to_string(centre) << std::endl;
 
-				std::cout << c1;
-				std::cout << " object Size: ";
-				std::cout << glm::to_string(targetSize) << std::endl;
-				std::cout << c1;
-				std::cout << " object Centre: ";
-				std::cout << glm::to_string(targetCentre) << std::endl;
+				//std::cout << c1;
+				//std::cout << " object Size: ";
+				//std::cout << glm::to_string(targetSize) << std::endl;
+				//std::cout << c1;
+				//std::cout << " object Centre: ";
+				//std::cout << glm::to_string(targetCentre) << std::endl;
 
 				//bool x = true;
 				//bool y = true;
@@ -80,7 +80,7 @@ namespace myengine
 				//}
 				//if (x == true && y == true && z == true)
 				//{
-					std::cout << "Collision with: " << c1 << std::endl;
+
 
 					//////getEntity()->getComponent<Collider>()->collisionResponse(rend::vec3(oldCentre));
 					//rend::vec3 seperation = centre - targetCentre;
@@ -97,6 +97,9 @@ namespace myengine
 					//	getEntity()->getComponent<Collider>()->collisionResponse(rend::vec3(0.0, 0.0, 0.1));
 					//}
 			
+
+
+				//std::cout << "Collision with: " << c1 << std::endl;
 			}
 		}
 	}

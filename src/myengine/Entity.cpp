@@ -27,6 +27,13 @@ void Entity::tick()
 			//components.at(ci)→kill(); // Eject component
 			//this→kill(); // Perhaps eject the entire object
 		}
+
+		if (components.at(ci)->broken == true)
+		{
+			components.erase(components.begin() + ci);
+			ci--;
+			std::cout << "Exception Caught: Deleted component that threw exception" << std::endl;
+		}
 	}
 }
 

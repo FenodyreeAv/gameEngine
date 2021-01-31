@@ -14,6 +14,7 @@
 #include "Input.h"
 #include "Collision.h"
 #include "rend/rend.h"
+#include "ExceptionCheck.h"
 
 using namespace myengine;
 

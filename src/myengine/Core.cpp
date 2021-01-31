@@ -155,7 +155,7 @@ namespace myengine
 
 			input->clearKeyBuffer();
 			frameStart = time;
-			std::cout << deltaTime;
+			//std::cout << deltaTime;
 		}
 	}
 }

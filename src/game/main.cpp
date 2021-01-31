@@ -38,6 +38,10 @@ struct NPC : public Component
 		{
 			getTransform()->rotate(0.0f, 1.5f, 0.0f);
 		}
+		if (getCore()->getInput()->getKey('b'))
+		{
+			std::shared_ptr<ExceptionCheck> brokenComponent = getEntity()->addComponent<ExceptionCheck>();
+		}
 	}
 };
 
@@ -104,8 +108,7 @@ int main()
 	cameraEntity->getTransform()->setPosition(rend::vec3(0, 20, 0));
 	cameraEntity->getTransform()->setRotation(rend::vec3(-90, 0, 0));
 
-	std::cout << "Components & Entities Loaded";
-
+	std::cout << "Components & Entities Loaded" << std::endl;
 	core->run();
 
 	return 0;
