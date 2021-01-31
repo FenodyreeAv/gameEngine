@@ -11,7 +11,6 @@ namespace myengine
 		scale = rend::vec3(1, 1, 1);
 	}
 
-
 	rend::mat4 Transform::getModelMatrix()
 	{
 		rend::mat4 modelMatrix = rend::mat4(1.0f);

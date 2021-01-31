@@ -47,6 +47,8 @@ namespace myengine
 		void tick();
 		void render();
 
+		void clearComponents();
+
 		std::shared_ptr<Transform> getTransform();
 		std::shared_ptr<Core> getCore();
 		
@@ -55,5 +57,6 @@ namespace myengine
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Core> core;
 		std::weak_ptr<Entity> self;
+		bool broken;
 	};
 }

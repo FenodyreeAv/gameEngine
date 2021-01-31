@@ -8,7 +8,7 @@ struct NPC : public Component
 	void onInitialize()
 	{
 		std::shared_ptr<Renderer> NPCRender = getEntity()->addComponent<Renderer>();
-		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("cube");
+		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
 		NPCRender->setModel(cube);
 	}
 
@@ -46,7 +46,7 @@ struct Player : public Component
 	void onInitialize()
 	{
 		std::shared_ptr<Renderer> playerRender = getEntity()->addComponent<Renderer>();
-		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("cube");
+		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
 		playerRender->setModel(cube);
 	}
 

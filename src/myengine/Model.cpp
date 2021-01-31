@@ -16,6 +16,9 @@ namespace myengine
 		mesh = getCore()->context->createMesh();
 		std::ifstream file(getPath() + ".obj");
 
+		std::cout << getPath() + ".obj";
+		std::cout << std::endl;
+
 		bool eof = false;
 		if (!file.is_open())
 		{

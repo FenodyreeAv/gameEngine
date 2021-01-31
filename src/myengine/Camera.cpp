@@ -28,10 +28,6 @@ namespace myengine
 	rend::mat4 Camera::getView()
 	{
 		rend::mat4 view = rend::inverse(getTransform()->getModelMatrix());
-
-		//std::cout << "getView" << std::endl;
-		//std::cout << glm::to_string(view) << std::endl;
-
 		return rend::inverse(getTransform()->getModelMatrix());
 	}
 

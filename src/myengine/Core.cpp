@@ -76,6 +76,7 @@ namespace myengine
 		rtn->core = self;
 		rtn->self = rtn;
 		rtn->addComponent<Transform>();
+		rtn->broken = false; //If set to true, entity is deleted at the start of the next loop
 	 	entities.push_back(rtn);
 
 		return rtn;
@@ -110,7 +111,15 @@ namespace myengine
 				}
 			}
 
-
+			for (size_t i = 0; i < entities.size(); i++)
+			{
+				if (entities.at(i)->broken == true)
+				{
+					entities.at(i)->clearComponents();
+					entities.erase(entities.begin() + i);
+					i--;
+				}
+			}
 
 			for (size_t ei = 0; ei < entities.size(); ei++) //Iterates through entities list
 			{

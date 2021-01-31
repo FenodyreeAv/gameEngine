@@ -23,7 +23,6 @@ namespace myengine
 	void Collider::onTick() 
 	{
 		
-
 		for (size_t c1 = 0; c1 < getCore()->colliders.size(); c1++) //Iterates through pointers to Collider Objects
 		{
 			if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same

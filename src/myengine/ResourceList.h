@@ -13,7 +13,6 @@ namespace myengine
 
 	struct ResourceList
 	{
-		friend struct Core;
 
 		template <typename T>
 		std::shared_ptr<T> loadPath(const char* path)
