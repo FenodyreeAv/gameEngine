@@ -21,7 +21,7 @@ namespace myengine
 		{
 			std::shared_ptr<T> rtn = std::make_shared<T>();
 			rtn->entity = self;
-
+			rtn->broken = false;
 			components.push_back(rtn);
 
 			rtn->onInitialize();   //Calls function based on template generation

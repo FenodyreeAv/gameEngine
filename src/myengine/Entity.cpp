@@ -23,6 +23,7 @@ void Entity::tick()
 		catch (Exception& e)
 		{
 			std::cout << "Exception: " << e.what() << std::endl;
+			components.at(ci)->kill();
 			//components.at(ci)→kill(); // Eject component
 			//this→kill(); // Perhaps eject the entire object
 		}
@@ -45,7 +46,6 @@ void Entity::clearComponents() //Ask if this is necessary?
 		ci--;
 	}
 }
-
 
 std::shared_ptr<Core> Entity::getCore()
 {

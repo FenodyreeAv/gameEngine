@@ -14,6 +14,11 @@ namespace myengine
 		onRender();
 	}
 
+	void Component::kill()
+	{
+		broken = true;
+	}
+
 	std::shared_ptr<Entity> Component::getEntity()
 	{
 		return entity.lock();
@@ -28,6 +33,8 @@ namespace myengine
 	{
 		return getEntity()->getTransform();
 	}
+
+
 
 	void Component::onTick() {}
 	void Component::onInitialize() {}

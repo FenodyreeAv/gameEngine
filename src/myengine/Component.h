@@ -22,13 +22,14 @@ namespace myengine
 		void render();
 		virtual void onRender(); 
 
+		void kill();
 		std::shared_ptr<Entity> getEntity();
 		std::shared_ptr<Core> getCore();
 		std::shared_ptr<Transform> getTransform();
 
 	private:
 		std::weak_ptr<Entity> entity; //Pointer to the entity this component belongs to
-
+		bool broken;
 	};
 	
 }
