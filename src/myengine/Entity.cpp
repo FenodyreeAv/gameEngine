@@ -32,7 +32,7 @@ void Entity::tick()
 		{
 			components.erase(components.begin() + ci);
 			ci--;
-			std::cout << "Exception Caught: Deleted component that threw exception" << std::endl;
+			std::cout << "Exception Caught: Deleted component that threw the exception." << std::endl;
 		}
 	}
 }

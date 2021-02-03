@@ -37,10 +37,7 @@ namespace myengine
 
 			return rtn;
 
-			//std::shared_ptr<Core> getCore();
-			//{
-			//	return core.lock();
-			//}
+
 		}
 
 	private:

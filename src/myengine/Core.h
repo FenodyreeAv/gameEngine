@@ -17,8 +17,6 @@ namespace myengine
 	
 	struct Core
 	{
-
-
 		static std::shared_ptr<Core> initialize();
 		
 		std::shared_ptr<Entity> addEntity();
@@ -28,9 +26,7 @@ namespace myengine
 		std::shared_ptr<ResourceList> getResourceList();
 
 		void run();
-
 		
-
 	private:
 		friend struct myengine::Renderer;
 		friend struct myengine::Model;
@@ -43,7 +39,6 @@ namespace myengine
 
 		SDL_Window* window;
 		SDL_GLContext glContext; //Here to be deleted, to prevent memory leaks
-
 
 		std::shared_ptr<rend::Context> context; //Used to reuse shaders
 		std::shared_ptr<Screen> screen;

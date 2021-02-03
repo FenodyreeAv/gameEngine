@@ -34,8 +34,6 @@ namespace myengine
 		return getEntity()->getTransform();
 	}
 
-
-
 	void Component::onTick() {}
 	void Component::onInitialize() {}
 	void Component::onRender() {}

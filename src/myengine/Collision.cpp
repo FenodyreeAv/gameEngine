@@ -13,7 +13,7 @@ namespace myengine
 		centre = getTransform()->getPosition();
 		size = rend::vec3(0.0f);
 
-		std::shared_ptr<Collider> self = getEntity()->getComponent<Collider>();
+		self = getEntity()->getComponent<Collider>();
 		getCore()->colliders.push_back(self);
 
 		thisCollider = getEntity()->getComponent<Collider>();
@@ -22,20 +22,29 @@ namespace myengine
 	
 	void Collider::onTick() 
 	{
+		centre = getTransform()->getPosition();
 		
 		for (size_t c1 = 0; c1 < getCore()->colliders.size(); c1++) //Iterates through pointers to Collider Objects
 		{
-			if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same
+			std::weak_ptr<Collider> weakptrTarget = getCore()->colliders.at(c1);
+			rend::vec3 targetSize = weakptrTarget.lock()->getSize();
+			rend::vec3 targetCentre = weakptrTarget.lock()->getCentre();
+
+			//if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same
+			if (centre == targetCentre)
 			{
-				//std::cout << "Ignored self collision.";
+				std::cout << "Ignored self collision." <<std::endl;
 			}
 			else
-			{
-				getTransform()->setPosition(getCollisionResponse(centre, size));
-							
-				std::weak_ptr<Collider> weakptrTarget = getCore()->colliders.at(c1);
-				rend::vec3 targetSize = weakptrTarget.lock()->getSize();
-				rend::vec3 targetCentre = weakptrTarget.lock()->getCentre();
+			{				
+				//std::weak_ptr<Collider> weakptrTarget = getCore()->colliders.at(c1);
+				//rend::vec3 targetSize = weakptrTarget.lock()->getSize();
+				//rend::vec3 targetCentre = weakptrTarget.lock()->getCentre();
+
+				std::cout << "onTick Centre: ";
+				std::cout << glm::to_string(centre) << std::endl;
+
+				getTransform()->setPosition(getCollisionResponse(centre, size, targetSize, targetCentre));
 
 				//std::cout << "This object Size: ";
 				//std::cout << glm::to_string(size) << std::endl;
@@ -45,9 +54,10 @@ namespace myengine
 				//std::cout << c1;
 				//std::cout << " object Size: ";
 				//std::cout << glm::to_string(targetSize) << std::endl;
+
 				//std::cout << c1;
-				//std::cout << " object Centre: ";
-				//std::cout << glm::to_string(targetCentre) << std::endl;
+				std::cout << "onTick targetCentre: ";
+				std::cout << glm::to_string(targetCentre) << std::endl;
 
 				//bool x = true;
 				//bool y = true;
@@ -126,8 +136,21 @@ namespace myengine
 		std::cout << glm::to_string(centre) << std::endl;
 	}
 
-	bool Collider::isColliding(rend::vec3 centre, rend::vec3 size)
+	bool Collider::isColliding(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize)
 	{
+		centre = getCentre();
+
+		//std::cout << "This object Size: ";
+		//std::cout << glm::to_string(size) << std::endl;
+		std::cout << "isColliding Centre: ";
+		std::cout << glm::to_string(centre) << std::endl;
+
+
+		//std::cout << " object Size: ";
+		//std::cout << glm::to_string(targetSize) << std::endl;
+		std::cout << "isColliding targetCentre: ";
+		std::cout << glm::to_string(targetCentre) << std::endl;
+
 		if (centre.x > targetCentre.x)
 		{
 			if (targetCentre.x + (targetSize.x / 2.0f) < centre.x - (size.x / 2.0f)) { return false; }
@@ -164,7 +187,7 @@ namespace myengine
 		offset = _offset;
 	}
 
-	rend::vec3 Collider::getCollisionResponse(rend::vec3 centre, rend::vec3 size)
+	rend::vec3 Collider::getCollisionResponse(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize)
 	{
 		{
 			centre = (getTransform()->getPosition());
@@ -172,24 +195,38 @@ namespace myengine
 			float step = 0.1f;
 			while (true)
 			{
-				if (!isColliding(centre, size)) break;
+
+				std::cout << "getCollisionResponse Centre: ";
+				std::cout << glm::to_string(centre) << std::endl;
+
+				////std::cout << "This object Size: ";
+				////std::cout << glm::to_string(size) << std::endl;
+				//std::cout << "This object Centre: ";
+				//std::cout << glm::to_string(centre) << std::endl;
+
+				////std::cout << " object Size: ";
+				////std::cout << glm::to_string(targetSize) << std::endl;
+				std::cout << "getCollisionResponse targetCentre: ";
+				std::cout << glm::to_string(targetCentre) << std::endl;
+
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.x += amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.x -= amount;
 				centre.x -= amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.x += amount;
 				centre.z += amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.z -= amount;
 				centre.z -= amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.z += amount;
 				centre.y += amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.y -= amount;
 				centre.y -= amount;
-				if (!isColliding(centre, size)) break;
+				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.y += amount;
 				amount += step;
 			}

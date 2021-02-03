@@ -10,6 +10,7 @@ namespace myengine
 	struct Core;
 	struct Transform;
 
+
 	struct Component
 	{
 		friend struct myengine::Entity; //Share private with entity
@@ -31,7 +32,6 @@ namespace myengine
 		std::weak_ptr<Entity> entity; //Pointer to the entity this component belongs to
 		bool broken;
 	};
-	
 }
 
 #endif

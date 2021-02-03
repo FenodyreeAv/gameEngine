@@ -9,6 +9,8 @@ struct NPC : public Component
 	{
 		std::shared_ptr<Renderer> NPCRender = getEntity()->addComponent<Renderer>();
 		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
+		std::shared_ptr<Texture> cubeTex = getCore()->getResourceList()->loadPath<Texture>("..//assets//cubeTex");
+		NPCRender->setTexture(cubeTex);
 		NPCRender->setModel(cube);
 	}
 
@@ -16,7 +18,7 @@ struct NPC : public Component
 	{
 		if (getCore()->getInput()->getKey('8'))
 		{
-			getTransform()->translate(0.0f, 0.0f, 0.1f);
+			getTransform()->translate(0.0f, 0.0f, 0.1f);	
 		}
 		if (getCore()->getInput()->getKey('4'))
 		{

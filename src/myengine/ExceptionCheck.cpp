@@ -15,6 +15,7 @@ namespace myengine
 		{
 			throw Exception("I am a debug exception!");
 		}
+
 		//void ExceptionCheck::onTick()
 		//{
 		//	

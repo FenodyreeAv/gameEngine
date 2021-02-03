@@ -8,6 +8,7 @@
 namespace myengine
 {
 	struct Model;
+	struct Texture;
 
 	struct Renderer : public Component
 	{
@@ -15,10 +16,11 @@ namespace myengine
 		void onRender();
 		
 		void setModel(std::shared_ptr<Model> model);
+		void setTexture(std::shared_ptr<Texture> texture);
 
 	private:
 		std::shared_ptr<rend::Shader> shader;
-
+		std::shared_ptr<Texture> texture;
 		std::shared_ptr<Model> model;
 		//std::shared_ptr<rend::Mesh> shape;
 
