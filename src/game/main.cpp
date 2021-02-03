@@ -9,7 +9,7 @@ struct NPC : public Component
 	{
 		std::shared_ptr<Renderer> NPCRender = getEntity()->addComponent<Renderer>();
 		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
-		std::shared_ptr<Texture> cubeTex = getCore()->getResourceList()->loadPath<Texture>("..//assets//cubeTex");
+		std::shared_ptr<TextureLoad> cubeTex = getCore()->getResourceList()->loadPath<TextureLoad>("..//assets//Smiley face");
 		NPCRender->setTexture(cubeTex);
 		NPCRender->setModel(cube);
 	}
@@ -32,11 +32,11 @@ struct NPC : public Component
 		{
 			getTransform()->translate(-0.1f, 0.0f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('y'))
+		if (getCore()->getInput()->getKey('i'))
 		{
 			getTransform()->rotate(0.0f, -1.5f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('o'))
+		if (getCore()->getInput()->getKey('y'))
 		{
 			getTransform()->rotate(0.0f, 1.5f, 0.0f);
 		}
@@ -53,6 +53,8 @@ struct Player : public Component
 	{
 		std::shared_ptr<Renderer> playerRender = getEntity()->addComponent<Renderer>();
 		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
+		std::shared_ptr<TextureLoad> cubeTex = getCore()->getResourceList()->loadPath<TextureLoad>("..//assets//Smiley face");
+		playerRender->setTexture(cubeTex);
 		playerRender->setModel(cube);
 	}
 
@@ -74,11 +76,11 @@ struct Player : public Component
 		{
 			getTransform()->translate(-0.1f, 0.0f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('q'))
+		if (getCore()->getInput()->getKey('e'))
 		{
 			getTransform()->rotate(0.0f, -1.5f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('e'))
+		if (getCore()->getInput()->getKey('q'))
 		{
 			getTransform()->rotate(0.0f, 1.5f, 0.0f);
 		}

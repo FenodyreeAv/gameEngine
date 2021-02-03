@@ -27,6 +27,8 @@ namespace myengine
 
 		bool Collider::isColliding(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize);
 
+		bool Collider::getAnchor();
+
 		void Collider::setOffset(rend::vec3 offset);
 
 		rend::vec3 Collider::getCollisionResponse(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize);
@@ -39,11 +41,8 @@ namespace myengine
 		rend::vec3 size;
 		rend::vec3 offset;
 
-		rend::vec3 targetSize;
-		rend::vec3 targetCentre;
-
 		std::shared_ptr<Collider> self;
-		std::shared_ptr<Collider> target;
+		
 
 		bool anchored;
 

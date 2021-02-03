@@ -14,6 +14,7 @@ namespace myengine
 	struct Camera;
 	struct Input;
 	struct Collider;
+	struct TextureLoad;
 	
 	struct Core
 	{
@@ -24,6 +25,7 @@ namespace myengine
 		std::shared_ptr<Camera> getCamera();
 		std::shared_ptr<Input> getInput();
 		std::shared_ptr<ResourceList> getResourceList();
+		std::shared_ptr<rend::Context> context; //Used to reuse shaders
 
 		void run();
 		
@@ -32,6 +34,7 @@ namespace myengine
 		friend struct myengine::Model;
 		friend struct myengine::Camera;
 		friend struct myengine::Collider;
+		//friend struct myengine::TextureLoad;
 		
 
 		std::vector<std::shared_ptr<Entity>> entities;
@@ -40,7 +43,7 @@ namespace myengine
 		SDL_Window* window;
 		SDL_GLContext glContext; //Here to be deleted, to prevent memory leaks
 
-		std::shared_ptr<rend::Context> context; //Used to reuse shaders
+
 		std::shared_ptr<Screen> screen;
 		std::shared_ptr<Input> input;
 

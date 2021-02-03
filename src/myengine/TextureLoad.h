@@ -2,14 +2,13 @@
 #include "Exception.h"
 #include "Resource.h"
 #include <rend/rend.h>
-
 #include <string>
 #include <memory>
 
 namespace myengine
 {
 	struct Renderer;
-	struct Texture: public Resource
+	struct TextureLoad: public Resource
 	{
 		void onLoad();
 

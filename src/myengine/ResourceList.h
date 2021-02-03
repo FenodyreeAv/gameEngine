@@ -29,6 +29,7 @@ namespace myengine
 				}
 			}
 			std::shared_ptr<T> rtn = std::make_shared<T>(); //if not in the list, load it & add it to the list
+			rtn->resourceList = self;
 			rtn->core = core;
 			rtn->path = path;
 			rtn->onLoad();

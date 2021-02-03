@@ -32,16 +32,22 @@ namespace myengine
 			//targetCentre = weakptrTarget.lock()->getCentre();
 			//targetSize = strptrTarget()->getSize();
 
-			target = getCore()->colliders.at(c1).lock();
+			std::shared_ptr<Collider> target = getCore()->colliders.at(c1).lock();
 
-			targetSize = target->getSize();
-			targetCentre = target->getCentre();			
+			rend::vec3 targetSize = target->getSize();
+			rend::vec3 targetCentre = target->getCentre();
 
-			//if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same
-			if (centre == targetCentre || anchored == true) //Inefficient! Find a way to check without locking the weak pointers
+			////if (thisCollider.owner_before(getCore()->colliders.at(c1))) //Checks if the weak pointers are the same
+			//if (centre == targetCentre || anchored == true) //Inefficient! Find a way to check without locking the weak pointers
+			//{
+			//	std::cout << "Ignored self collision." <<std::endl;
+			//}
+
+			if (thisCollider.lock() == target || target->getAnchor())
 			{
-				//std::cout << "Ignored self collision." <<std::endl;
+				std::cout << "Ignored self collision." << std::endl;
 			}
+
 			else
 			{				
 				//std::weak_ptr<Collider> weakptrTarget = getCore()->colliders.at(c1);
@@ -54,14 +60,15 @@ namespace myengine
 				//std::cout << "onTick targetCentre: ";
 				//std::cout << glm::to_string(targetCentre) << std::endl;
 
-				getTransform()->setPosition(getCollisionResponse(centre, size, targetSize, targetCentre));
+				getTransform()->setPosition(getCollisionResponse(centre, size, targetCentre, targetSize));
+/*
+				std::cout << "This object Size: ";
+				std::cout << glm::to_string(size) << std::endl*/;
+				std::cout << "This object Centre: ";
+				std::cout << glm::to_string(centre) << std::endl;
 
-				//std::cout << "This object Size: ";
-				//std::cout << glm::to_string(size) << std::endl;
-				//std::cout << "This object Centre: ";
-				//std::cout << glm::to_string(centre) << std::endl;
 
-				//std::cout << c1;
+				std::cout << c1;
 				//std::cout << " object Size: ";
 				//std::cout << glm::to_string(targetSize) << std::endl;
 
@@ -115,6 +122,11 @@ namespace myengine
 	void Collider::setAnchor(bool _anchored)
 	{
 		this->anchored = _anchored;
+	}
+
+	bool Collider::getAnchor()
+	{
+		return anchored;
 	}
 
 	bool Collider::isColliding(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize)
@@ -172,16 +184,16 @@ namespace myengine
 	rend::vec3 Collider::getCollisionResponse(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize)
 	{
 
-		targetSize = target->getSize();
-		targetCentre = target->getCentre();
+		//targetSize = target->getSize();
+		//targetCentre = target->getCentre();
 
 			//centre = (getTransform()->getPosition());
 			float amount = 0.1f;
 			float step = 0.1f;
 			while (true)
 			{
-				//std::cout << "getCollisionResponse Centre: ";
-				//std::cout << glm::to_string(centre) << std::endl;
+				std::cout << "getCollisionResponse Centre: ";
+				std::cout << glm::to_string(centre) << std::endl;
 
 				////std::cout << "This object Size: ";
 				////std::cout << glm::to_string(size) << std::endl;
@@ -191,8 +203,8 @@ namespace myengine
 				////std::cout << " object Size: ";
 				////std::cout << glm::to_string(targetSize) << std::endl;
 
-				//std::cout << "getCollisionResponse targetCentre: ";
-				//std::cout << glm::to_string(targetCentre) << std::endl;
+				std::cout << "getCollisionResponse targetCentre: ";
+				std::cout << glm::to_string(targetCentre) << std::endl;
 
 				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.x += amount;

@@ -15,7 +15,7 @@
 #include "Collision.h"
 #include "rend/rend.h"
 #include "ExceptionCheck.h"
-#include "Texture.h"
+#include "TextureLoad.h"
 
 using namespace myengine;
 

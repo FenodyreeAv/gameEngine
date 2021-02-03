@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "TextureLoad.h"
 
 namespace myengine 
 {
@@ -38,10 +39,13 @@ namespace myengine
 			"                                        " \
 			"void main()                             " \
 			"{                                       " \
-			"  gl_FragColor = vec4(v_TexCoord, 0, 1);" \
+			"  gl_FragColor = texture2D(u_Texture, v_TexCoord);" \
 			"}                                       " \
 			"                                        " \
 			"\n#endif\n                              ";
+
+			
+
 
 
 
@@ -55,6 +59,8 @@ namespace myengine
 		shader->setUniform("u_Projection", rend::perspective(rend::radians(45.0f),1.0f, 0.1f, 100.0f));	   		 
 		shader->setUniform("u_View", getCore()->getCamera()->getView());
 		shader->setUniform("u_Model", getEntity()->getTransform()->getModelMatrix());
+
+
 		std::shared_ptr<Camera> c = getCore()->getCamera();
 
 		if (c->getRenderTexture())
@@ -72,8 +78,8 @@ namespace myengine
 		this->model = model;
 	}
 
-	void Renderer::setTexture(std::shared_ptr<Texture> texture)
+	void Renderer::setTexture(std::shared_ptr<TextureLoad> _texture)
 	{
-		this->texture = texture;
+		this->texture = _texture;
 	}
 }

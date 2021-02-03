@@ -2,7 +2,6 @@
 #include <rend/rend.h>
 #include "ResourceList.h"
 #include "Core.h"
-#include "Model.h"
 
 #include <string>
 #include <fstream>
