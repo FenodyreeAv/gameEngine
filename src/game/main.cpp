@@ -16,27 +16,27 @@ struct NPC : public Component
 
 	void onTick()
 	{
-		if (getCore()->getInput()->getKey('8'))
+		if (getCore()->getInput()->getKey('u'))
 		{
 			getTransform()->translate(0.0f, 0.0f, 0.1f);	
 		}
-		if (getCore()->getInput()->getKey('4'))
+		if (getCore()->getInput()->getKey('h'))
 		{
 			getTransform()->translate(0.1f, 0.0f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('5'))
+		if (getCore()->getInput()->getKey('j'))
 		{
 			getTransform()->translate(0.0f, 0.0f, -0.1f);
 		}
-		if (getCore()->getInput()->getKey('6'))
+		if (getCore()->getInput()->getKey('k'))
 		{
 			getTransform()->translate(-0.1f, 0.0f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('7'))
+		if (getCore()->getInput()->getKey('y'))
 		{
 			getTransform()->rotate(0.0f, -1.5f, 0.0f);
 		}
-		if (getCore()->getInput()->getKey('9'))
+		if (getCore()->getInput()->getKey('o'))
 		{
 			getTransform()->rotate(0.0f, 1.5f, 0.0f);
 		}
@@ -94,15 +94,19 @@ int main()
 	playerEntity->getTransform()->setScale(rend::vec3(0.5, 0.5, 0.5));
 	std::shared_ptr<Player> playerComp = playerEntity->addComponent<Player>();
 	std::shared_ptr<Collider> playerCollider = playerEntity->addComponent<Collider>();
-	playerEntity->getComponent<Collider>()->setSize(rend::vec3(5, 5, 5));
+	playerEntity->getComponent<Collider>()->setSize(rend::vec3(2.5, 2.5, 2.5));
+	playerEntity->getComponent<Collider>()->setCentre(rend::vec3(5, 0, 0));
+	playerEntity->getComponent<Collider>()->setAnchor(false);
 
 	std::shared_ptr<Entity> NPC1 = core->addEntity();
 	NPC1->getTransform()->setPosition(rend::vec3(0.5, 0, 0));
 	NPC1->getTransform()->setScale(rend::vec3(0.5, 0.5, 0.5));
 	std::shared_ptr<NPC> NPCComp = NPC1->addComponent<NPC>();
 	std::shared_ptr<Collider> NPCCollider = NPC1->addComponent<Collider>();
-	NPC1->getComponent<Collider>()->setSize(rend::vec3(5, 5, 5));
+	NPC1->getComponent<Collider>()->setSize(rend::vec3(2.5, 2.5, 2.5));
+	playerEntity->getComponent<Collider>()->setCentre(rend::vec3(0.5, 0, 0));
 	NPC1->getComponent<Collider>()->setOffset(rend::vec3(0, 0, 0));
+	NPC1->getComponent<Collider>()->setAnchor(true);
 
 	std::shared_ptr<Entity> camera = core->addEntity();
 	std::shared_ptr<Entity> cameraEntity = core->addEntity();

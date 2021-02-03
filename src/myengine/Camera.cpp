@@ -31,6 +31,11 @@ namespace myengine
 		return rend::inverse(getTransform()->getModelMatrix());
 	}
 
+	rend::vec3 Camera::getCameraPos()
+	{
+		return getEntity()->getComponent<Transform>()->getPosition();
+	}
+
 	std::shared_ptr<rend::RenderTexture> Camera::getRenderTexture()
 	{
 		return renderTexture;

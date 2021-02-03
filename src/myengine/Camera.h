@@ -13,6 +13,7 @@ namespace myengine
 		//void onDestroy();
 
 		rend::mat4 getView();
+		rend::vec3 getCameraPos();
 
 		std::shared_ptr<rend::RenderTexture> getRenderTexture();
 

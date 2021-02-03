@@ -12,7 +12,7 @@ namespace myengine
 
 	void Texture::onLoad()
 	{
-		//tex = getCore()->context->createTexture();
+
 		//std::ifstream file(getPath() + ".png");
 
 		//std::cout << getPath() + ".png";

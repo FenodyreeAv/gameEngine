@@ -14,6 +14,7 @@ namespace myengine
 
 		void setSize(rend::vec3 _size);
 		void setCentre(rend::vec3 _centre);
+		void setAnchor(bool _anchored);
 
 		rend::vec3 Collider::getSize();
 		rend::vec3 Collider::getCentre();
@@ -30,21 +31,27 @@ namespace myengine
 
 		rend::vec3 Collider::getCollisionResponse(rend::vec3 centre, rend::vec3 size, rend::vec3 targetCentre, rend::vec3 targetSize);
 
+		
+
 
 	private:
 		rend::vec3 centre;
 		rend::vec3 size;
 		rend::vec3 offset;
 
+		rend::vec3 targetSize;
+		rend::vec3 targetCentre;
+
 		std::shared_ptr<Collider> self;
+		std::shared_ptr<Collider> target;
+
+		bool anchored;
 
 		float collisionMultiplier;
 		std::weak_ptr<Entity> parent;
 		std::weak_ptr<Collider> thisCollider;
 		std::weak_ptr<Transform> parentTransform;
-		rend::vec3 targetSize;
-		rend::vec3 targetCentre;
-		std::weak_ptr<Collider> weakptrTarget;
+		//std::weak_ptr<Collider> weakptrTarget;
 
 	}; 
 }

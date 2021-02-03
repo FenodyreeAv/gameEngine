@@ -71,6 +71,7 @@ namespace myengine
 	{
 		this->model = model;
 	}
+
 	void Renderer::setTexture(std::shared_ptr<Texture> texture)
 	{
 		this->texture = texture;

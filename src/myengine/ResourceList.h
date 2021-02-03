@@ -39,6 +39,10 @@ namespace myengine
 
 
 		}
+		std::shared_ptr<Core> getCore()
+		{
+			return core.lock();
+		};
 
 	private:
 		friend struct myengine::Core;
