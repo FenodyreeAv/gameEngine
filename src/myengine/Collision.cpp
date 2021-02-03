@@ -45,7 +45,7 @@ namespace myengine
 
 			if (thisCollider.lock() == target || target->getAnchor())
 			{
-				std::cout << "Ignored self collision." << std::endl;
+				//std::cout << "Ignored self collision." << std::endl;
 			}
 
 			else
@@ -64,8 +64,8 @@ namespace myengine
 /*
 				std::cout << "This object Size: ";
 				std::cout << glm::to_string(size) << std::endl*/;
-				std::cout << "This object Centre: ";
-				std::cout << glm::to_string(centre) << std::endl;
+				//std::cout << "This object Centre: ";
+				//std::cout << glm::to_string(centre) << std::endl;
 
 
 				std::cout << c1;
@@ -192,8 +192,8 @@ namespace myengine
 			float step = 0.1f;
 			while (true)
 			{
-				std::cout << "getCollisionResponse Centre: ";
-				std::cout << glm::to_string(centre) << std::endl;
+				//std::cout << "getCollisionResponse Centre: ";
+				//std::cout << glm::to_string(centre) << std::endl;
 
 				////std::cout << "This object Size: ";
 				////std::cout << glm::to_string(size) << std::endl;
@@ -203,8 +203,8 @@ namespace myengine
 				////std::cout << " object Size: ";
 				////std::cout << glm::to_string(targetSize) << std::endl;
 
-				std::cout << "getCollisionResponse targetCentre: ";
-				std::cout << glm::to_string(targetCentre) << std::endl;
+				//std::cout << "getCollisionResponse targetCentre: ";
+				//std::cout << glm::to_string(targetCentre) << std::endl;
 
 				if (!isColliding(centre, size, targetCentre, targetSize)) break;
 				centre.x += amount;

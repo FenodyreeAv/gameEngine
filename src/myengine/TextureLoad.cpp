@@ -3,6 +3,10 @@
 #include "ResourceList.h"
 #include "Core.h"
 
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -31,7 +35,7 @@ namespace myengine
 
 		tex = getCore()->context->createTexture();
 
-		/*unsigned char *data = stbi_load((getPath() + ".png").c_str(), &w, &h, &bpp, 3);
+		unsigned char *data = stbi_load((getPath() + ".png").c_str(), &w, &h, &bpp, 3);
 
 		if (!data)
 		{
@@ -52,7 +56,7 @@ namespace myengine
 					data[r + 2] / 255.0f));
 			}
 		}
-		stbi_image_free(data);*/
+		stbi_image_free(data);
 	}
 
 

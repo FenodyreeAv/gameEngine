@@ -9,7 +9,7 @@ struct NPC : public Component
 	{
 		std::shared_ptr<Renderer> NPCRender = getEntity()->addComponent<Renderer>();
 		std::shared_ptr<Model> cube = getCore()->getResourceList()->loadPath<Model>("..//assets//cube");
-		std::shared_ptr<TextureLoad> cubeTex = getCore()->getResourceList()->loadPath<TextureLoad>("..//assets//Smiley face");
+		std::shared_ptr<TextureLoad> cubeTex = getCore()->getResourceList()->loadPath<TextureLoad>("..//assets//Sad face");
 		NPCRender->setTexture(cubeTex);
 		NPCRender->setModel(cube);
 	}
