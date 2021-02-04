@@ -10,10 +10,18 @@ namespace myengine
 {
 
 	struct Core;
-
+	/********************************************//**
+	* \brief Manages the loading of resources.
+	***********************************************/
 	struct ResourceList
 	{
-
+		/********************************************//**
+		* \brief Loads resources and adds them to the list of loaded resources.
+		*
+		* Iterates through all loaded resources, and compares them to the resource currently being loaded.
+		* If the resource has already been loaded, return a pointer to the resource, instead of loading it again.
+		* Adds all newly loaded resources to the resource list.
+		***********************************************/
 		template <typename T>
 		std::shared_ptr<T> loadPath(const char* path)
 		{
@@ -35,11 +43,12 @@ namespace myengine
 			rtn->onLoad();
 			resourceList.push_back(rtn);
 			std::cout << resourceList.size();
-
 			return rtn;
-
-
 		}
+
+		/********************************************//**
+		* \brief Returns pointer to the Core.
+		***********************************************/
 		std::shared_ptr<Core> getCore()
 		{
 			return core.lock();
