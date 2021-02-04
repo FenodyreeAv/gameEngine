@@ -8,8 +8,14 @@
 namespace myengine
 {
 	struct Renderer;
+	/********************************************//**
+	* \brief Manages texture data.
+	***********************************************/
 	struct TextureLoad: public Resource
 	{
+		/********************************************//**
+		* \brief Loads texture from file.
+		***********************************************/
 		void onLoad();
 
 	private:
