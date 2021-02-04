@@ -11,7 +11,7 @@ namespace myengine
 	struct Transform;
 
 	/********************************************//**
-	* \brief 
+	* \brief Components contain functionality, to be added to entities.
 	***********************************************/
 	struct Component
 	{

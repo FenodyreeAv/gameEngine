@@ -16,17 +16,45 @@ namespace myengine
 	struct Collider;
 	struct TextureLoad;
 	
+	/********************************************//**
+	* \brief Engine's main class, contains all core functionality.
+	***********************************************/
 	struct Core
 	{
+		/********************************************//**
+		* \brief Initializes program, creates a pointer to the core.
+		***********************************************/
 		static std::shared_ptr<Core> initialize();
 		
+		/********************************************//**
+		* \brief Creates an entity, adds it to the list of entities.
+		***********************************************/
 		std::shared_ptr<Entity> addEntity();
+
+		/********************************************//**
+		* \brief Returns a pointer to the screen.
+		***********************************************/
 		std::shared_ptr<Screen> getScreen();
+		/********************************************//**
+		* \brief Returns a pointer to the current camera.
+		***********************************************/
 		std::shared_ptr<Camera> getCamera();
+		/********************************************//**
+		* \brief Returns a pointer to the input.
+		***********************************************/
 		std::shared_ptr<Input> getInput();
+		/********************************************//**
+		* \brief Returns pointer to the resource manager.
+		***********************************************/
 		std::shared_ptr<ResourceList> getResourceList();
+		/********************************************//**
+		* \brief Returns a pointer to the rendering context.
+		***********************************************/
 		std::shared_ptr<rend::Context> context; //Used to reuse shaders
 
+		/********************************************//**
+		* \brief Begins the main loop.
+		***********************************************/
 		void run();
 		
 	private:
@@ -34,8 +62,6 @@ namespace myengine
 		friend struct myengine::Model;
 		friend struct myengine::Camera;
 		friend struct myengine::Collider;
-		//friend struct myengine::TextureLoad;
-		
 
 		std::vector<std::shared_ptr<Entity>> entities;
 		std::weak_ptr<Core> self;
