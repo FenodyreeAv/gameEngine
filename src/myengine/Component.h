@@ -10,22 +10,51 @@ namespace myengine
 	struct Core;
 	struct Transform;
 
-
+	/********************************************//**
+	* \brief 
+	***********************************************/
 	struct Component
 	{
 		friend struct myengine::Entity; //Share private with entity
+		/********************************************//**
+		* \brief Called on component creation. Overwritten by component types.
+		***********************************************/
+		virtual void onInitialize();
 
-		virtual void onInitialize(); //Fallback, will not be called without correct parameter types
-
+		/********************************************//**
+		* \brief Called each tick, calls onTick.
+		***********************************************/
 		void tick();
+		/********************************************//**
+		* \brief Function overwritten by component types.
+		***********************************************/
 		virtual void onTick();
 
+		/********************************************//**
+		* \brief Called each tick, calls onRender.
+		***********************************************/
 		void render();
+		/********************************************//**
+		* \brief Function overwritten by Renderer class.
+		***********************************************/
 		virtual void onRender(); 
 
+		/********************************************//**
+		* \brief Flags component to be removed next tick.
+		***********************************************/
 		void kill();
+
+		/********************************************//**
+		* \brief Returns pointer to parent entity.
+		***********************************************/
 		std::shared_ptr<Entity> getEntity();
+		/********************************************//**
+		* \brief Returns pointer to the Core.
+		***********************************************/
 		std::shared_ptr<Core> getCore();
+		/********************************************//**
+		* \brief Shortcut. Returns pointer to parent entity's transform component.
+		***********************************************/
 		std::shared_ptr<Transform> getTransform();
 
 	private:
