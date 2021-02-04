@@ -24,8 +24,6 @@ void Entity::tick()
 		{
 			std::cout << "Exception: " << e.what() << std::endl;
 			components.at(ci)->kill();
-			//components.at(ci)→kill(); // Eject component
-			//this→kill(); // Perhaps eject the entire object
 		}
 
 		if (components.at(ci)->broken == true)

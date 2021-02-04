@@ -67,14 +67,14 @@ namespace myengine
 
 		std::shared_ptr<Camera> c = getCore()->getCamera();
 
-		if (c->getRenderTexture())
-		{
-			shader->render(c->getRenderTexture());
-		}
-		else
-		{
+		//if (c->getRenderTexture())
+		//{
+		//	shader->render(c->getRenderTexture());
+		//}
+		//else
+		//{
 			shader->render();
-		}
+		//}
 	} 
 
 	void Renderer::setModel(std::shared_ptr<Model> model)

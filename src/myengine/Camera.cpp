@@ -15,37 +15,17 @@ namespace myengine
 		getCore()->cameras.push_back(self);
 	}
 
-	//rend::mat4 Camera::getView()
-	//{
-	//	rend::mat4 view = rend::inverse(getTransform()->getModelMatrix());
-	//				
-	//	std::cout << "getView" << std::endl;
-	//	std::cout << glm::to_string(view) << std::endl;
-
-	//	return rend::inverse(getTransform()->getModelMatrix());
-	//}
-
 	rend::mat4 Camera::getView()
 	{
 		rend::mat4 view = rend::inverse(getTransform()->getModelMatrix());
+		//	std::cout << "getView" << std::endl;
+		//	std::cout << glm::to_string(view) << std::endl;
 		return rend::inverse(getTransform()->getModelMatrix());
 	}
 
 	rend::vec3 Camera::getCameraPos()
 	{
 		return getEntity()->getComponent<Transform>()->getPosition();
-	}
-
-	std::shared_ptr<rend::RenderTexture> Camera::getRenderTexture()
-	{
-		return renderTexture;
-	}
-
-	std::shared_ptr<rend::RenderTexture> Camera::addRenderTexture()
-	{
-		renderTexture = getCore()->context->createRenderTexture();
-
-		return renderTexture;
 	}
 
 }
