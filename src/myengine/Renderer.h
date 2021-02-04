@@ -9,13 +9,27 @@ namespace myengine
 {
 	struct Model;
 	struct TextureLoad;
-
+	/********************************************//**
+	* \brief Handles rendering to the screen.
+	***********************************************/
 	struct Renderer : public Component
 	{
+		/********************************************//**
+		* \brief Called on creation of a renderer, sets up the shaders.
+		***********************************************/
 		void onInitialize();
+		/********************************************//**
+		* \brief Handles rendering to the screen, called once per tick.
+		***********************************************/
 		void onRender();
 		
+		/********************************************//**
+		* \brief Returns pointer to the model to be rendered.
+		***********************************************/
 		void setModel(std::shared_ptr<Model> model);
+		/********************************************//**
+		* \brief Returns pointer to the texture to be used.
+		***********************************************/
 		void setTexture(std::shared_ptr<TextureLoad> _texture);
 
 	private:
