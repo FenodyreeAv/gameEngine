@@ -7,10 +7,22 @@ namespace myengine
 {
 	struct Core;
 
+	/********************************************//**
+	* \brief Stores and processes inputs (key presses).
+	***********************************************/
 	struct Input
 	{
+		/********************************************//**
+		* \brief Returns true if a specified key has been pressed this frame.
+		***********************************************/
 		bool getKey(int key);
+		/********************************************//**
+		* \brief Returns true if a specified key is down this frame.
+		***********************************************/
 		bool keyDown(int key);
+		/********************************************//**
+		* \brief Returns true if a specified key is up this frame.
+		***********************************************/
 		bool keyUp(int key);
 
 		//bool getMouse(int mouse);
