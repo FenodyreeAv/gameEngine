@@ -12,10 +12,16 @@ namespace myengine
 	struct Exception;
 	struct Transform;
 
+	/********************************************//**
+	* \brief Creates game objects.
+	***********************************************/
 	struct Entity
 	{
 		friend struct ::myengine::Core;
 
+		/********************************************//**
+		* \brief Template function, adds components to entities.
+		***********************************************/
 		template <typename T>
 		std::shared_ptr<T> addComponent()
 		{
@@ -29,6 +35,9 @@ namespace myengine
 			return rtn;
 		}
 
+		/********************************************//**
+		* \brief Returns pointer a component of a specific type.
+		***********************************************/
 		template <typename T>
 		std::shared_ptr<T> getComponent()
 		{
@@ -43,15 +52,28 @@ namespace myengine
 
 			throw Exception("Entity does not contain requested type");
 		}
-
+		/********************************************//**
+		* \brief Iterates through all components, calling tick on them.
+		***********************************************/
 		void tick();
+		/********************************************//**
+		* \brief Iterates through all components, calling any renderer components.
+		***********************************************/
 		void render();
 
+		/********************************************//**
+		* \brief Iterates through all components, removing each one. 
+		***********************************************/
 		void clearComponents();
 
+		/********************************************//**
+		* \brief Shortcut. Returns pointer to the transform component.
+		***********************************************/
 		std::shared_ptr<Transform> getTransform();
+		/********************************************//**
+		* \brief Shortcut. Returns pointer to core.
+		***********************************************/
 		std::shared_ptr<Core> getCore();
-		
 		
 	private:
 		std::vector<std::shared_ptr<Component>> components;
